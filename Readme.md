@@ -1,5 +1,3 @@
-# posts not updating
+# TravelGram
 
-# post disappearing on refresh but remaining in db
-
-# Link in react-router-domm not working
+A social meadia app to share your travel memories.
