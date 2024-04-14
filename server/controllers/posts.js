@@ -1,16 +1,11 @@
-import  express  from "express";
 import mongoose from "mongoose";
+import PostMessage from "../models/postMessage.js";
 
-import PostMessage from "../models/postMessage.js"
-
-const router = express.Router();
-
-
-export const getPosts = (req, res) => {
+export const getPosts = async (req, res) => {
     try {
-        const postMessages = PostMessage.find(); //all  posts are returned as an array of objects
-        console.log(postMessages);
-        res.status(200);
+        const postMessages = await PostMessage.find(); //all  posts are returned as an array of objects
+
+        res.status(200).json(postMessages);
     } catch (error) {
         res.status(404).json({ message: error.message })
     }
@@ -59,5 +54,3 @@ export const likePost = async (req, res) => {
     res.json(updatedPost);
 
 }
-
-export default router;
