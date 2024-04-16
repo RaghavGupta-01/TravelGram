@@ -10,7 +10,6 @@ import travelgram from '../../images/travelgram.png';
 const Navbar = () => {
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    console.log(user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();

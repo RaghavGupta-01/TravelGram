@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from './Input';
-
+import {signin,signup} from '../../actions/auth'
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
 const Auth = () => {
@@ -25,7 +25,15 @@ const Auth = () => {
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
   const handleSubmit = (e,res) => {
+    e.preventDefault();
 
+    console.log(formData)
+
+    if(isSignup){
+        dispatch(signup(formData,navigate));
+    }else{
+        dispatch(signin(formData,navigate));
+    }
   }
 
   const handleChange = (e) => {
