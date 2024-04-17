@@ -27,7 +27,7 @@ const Auth = () => {
   const handleSubmit = (e,res) => {
     e.preventDefault();
 
-    console.log(formData)
+    // console.log(formData)
 
     if(isSignup){
         dispatch(signup(formData,navigate));
@@ -41,7 +41,7 @@ const Auth = () => {
   }
   const switchMode = () => {
     setIsSignup((previsSignup) => !previsSignup)
-    handleShowPassword(false);
+    setShowPassword(false);
   }
 
   const googleSuccess = async (res) => {

@@ -3,13 +3,11 @@ import * as api from '../api/index';
 
 export const signin = (formData, navigate) => async (dispatch) => {
     try {
-        //log in the user 
+        const { data } = await api.signIn(formData);
 
-        // const {data} = await api.signin(formData);
+        dispatch({ type: AUTH, data });
 
-        // dispatch({type : AUTH,data});
-
-        // navigate('/');
+        navigate('/');
     } catch (error) {
         console.log(error)
     }
@@ -17,7 +15,10 @@ export const signin = (formData, navigate) => async (dispatch) => {
 export const signup = (formData, navigate) => async (dispatch) => {
     try {
         //sign up the user
-        
+
+        const { data } = await api.signUp(formData);
+
+        dispatch({ type: AUTH, data });
     } catch (error) {
         console.log("Something wrong in actions")
         console.log(error)
