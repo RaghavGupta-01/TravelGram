@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { Button, AppBar, Avatar, Toolbar, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { jwtDecode } from 'jwt-decode'
 import useStyles from './styles';
 import travelgram from '../../images/travelgram.png';
-
+import heading from '../../images/heading.png';
+import icon from '../../images/icon.png';
 
 const Navbar = () => {
     const classes = useStyles();
@@ -37,10 +38,11 @@ const Navbar = () => {
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to='/' className={classes.heading} variant="h2" align="center">TravelGram</Typography>
-                <img className={classes.image} src={travelgram} alt="icon" height="60" />
-            </div>
+            <NavLink to='/' className={classes.brandContainer}>
+                {/* <Typography component={Link} to='/' className={classes.heading} variant="h2" align="center">TravelGram</Typography> */}
+                <img  src={heading} alt="icon" height="60px" />
+                <img className={classes.image} src={icon} alt="icon" height="60px" />
+            </NavLink>
             <Toolbar className={classes.toolbar}>
                 {user && user.result ? (
                     <div className={classes.profile}>
