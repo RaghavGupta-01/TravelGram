@@ -19,15 +19,15 @@ const Post = ({ post, setCurrentId }) => {
   const [likes, setLikes] = useState(post?.likes);
 
   const userId = user?.result?.googleId || user?.result?._id;
-  const hasLikedPost = post.likes.find((like) => like === (userId));
+  const hasLikedPost = likes.find((like) => like === (userId));
 
   const handleLike = async () => {
     dispatch(likePost(post._id));
 
     if (hasLikedPost) {
-      setLikes(post.likes.filter((id) => id !== (userId)))
+      setLikes(likes.filter((id) => id !== (userId)))
     } else {
-      setLikes([...post.likes, userId]);
+      setLikes([...likes, userId]);
     }
   };
 
@@ -57,11 +57,19 @@ const Post = ({ post, setCurrentId }) => {
           <Typography variant="h6">{post.name}</Typography>
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
-        <div className={classes.overlay2}>
-          {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-            <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}><MoreHorizIcon fontSize="medium" /></Button>
-          )}
+      </ButtonBase >
+      {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+        <div className={classes.overlay2} name="edit">
+          <Button style={{ color: 'white' }} size="small"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentId(post._id);
+            }}>
+            <MoreHorizIcon fontSize="medium" />
+          </Button>
         </div>
+      )}
+      <ButtonBase className={classes.cardAction} onClick={openPost}>
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
         </div>
