@@ -45,7 +45,7 @@ const Auth = () => {
   }
 
   const googleSuccess = async (res) => {
-    console.log(res);
+    // console.log(res);
     const result = jwtDecode(res.credential);
 
     try {
