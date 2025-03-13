@@ -13,7 +13,17 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+
+const corsOptions = {
+    origin: ["http://localhost:3000", "https://travelgram-app.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+  };
+  
+  app.use(cors(corsOptions));
+  app.options("*", cors(corsOptions));  
+  
 
 app.use('/posts', postRoutes);       //this will make sure that all the routes in post routes will start from /posts
 app.use('/user', userRoutes);
