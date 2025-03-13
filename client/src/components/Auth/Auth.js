@@ -21,6 +21,7 @@ const Auth = () => {
 
   const [formData, setFormData] = useState(initialState);
 
+const CLIENT_ID =  process.env.REACT_APP_GOOGLE_CLIENT_ID
 
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
@@ -83,7 +84,7 @@ const Auth = () => {
           </Grid>
           <Button type='submit' fullWidth variant="contained" color='primary' className={classes.submit}>{isSignup ? 'Sign Up' : 'Sign In'} </Button>
           <Grid container justifyContent='center'>
-            <GoogleOAuthProvider clientId='304865678711-4dl8k3jh73ph494joqmkdep6c3lmsuff.apps.googleusercontent.com'>
+            <GoogleOAuthProvider clientId={CLIENT_ID}>
               <GoogleLogin
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
