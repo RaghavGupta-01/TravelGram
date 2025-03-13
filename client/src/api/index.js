@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseurl: 'http://localhost:5000/posts' })
+const API = axios.create({ baseurl: 'travelgram-server.vercel.app/posts' })
 
 //we are adding the bearer prepending our string to token and adding that to each & every request
 
